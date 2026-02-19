@@ -1,31 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>About Us – Just Show Up</title>
-  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --background: 228 45% 7%;
+      --foreground: 210 40% 96%;
+      --card: 228 40% 10%;
+      --primary: 328 100% 60%;
+      --secondary: 199 100% 70%;
+      --muted: 228 30% 16%;
+      --border: 228 30% 20%;
+      --neon-pink: 328 100% 60%;
+      --ice-blue: 199 100% 70%;
+      --navy: 228 45% 7%;
+      --navy-mid: 228 40% 12%;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: hsl(var(--background));
+      color: hsl(var(--foreground));
+      min-height: 100vh;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+    }
+
+    .text-gradient {
+      background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(280,90%,65%) 50%, hsl(var(--secondary)) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .glow-pink {
+      box-shadow: 0 0 30px hsl(var(--primary)/0.4), 0 0 60px hsl(var(--primary)/0.2);
+    }
+
+    .glass-card {
+      background: rgba(228,40%,10%,0.75);
+      backdrop-filter: blur(12px);
+      border: 1px solid hsl(var(--border));
+      border-radius: 1.5rem;
+    }
+
+    .btn-gradient {
+      background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(280,90%,65%) 50%, hsl(var(--secondary)) 100%);
+      transition: all 0.4s;
+    }
+
+    .btn-gradient:hover {
+      transform: translateY(-4px) scale(1.03);
+      box-shadow: 0 0 40px hsl(var(--primary)/0.6);
+    }
+  </style>
 </head>
 <body>
 
-  <nav><!-- same nav as index --></nav>
-
-  <section class="section">
-    <div class="container">
-      <h1>About Just Show Up</h1>
-      <p style="font-size:1.3rem; max-width:800px; margin:2rem auto;">
-        We created Just Show Up because planning dates can kill the spark. One person always ends up doing all the work, and the other waits... and waits. We wanted something different: effortless, spontaneous moments that feel thoughtful without the stress.
-      </p>
-      <p style="font-size:1.3rem; max-width:800px; margin:2rem auto;">
-        Whether you're surprising your partner with "I already picked the spot — just meet me", or you're both free and want something fun now, we scan local events, pop-ups, and vibes in your area and give you perfect, low-pressure options. No RSVPs, no overthinking — just show up and enjoy.
-      </p>
-      <p style="font-size:1.3rem; max-width:800px; margin:2rem auto;">
-        Built in Arlington, Texas — but made for anywhere. Let's bring back real connection, one unplanned night at a time.
-      </p>
-      <a href="index.html" class="btn">Find Your Next Date</a>
+  <!-- Navigation -->
+  <nav class="fixed top-0 w-full bg-[hsl(var(--navy-mid))] backdrop-blur-xl z-50 border-b border-[hsl(var(--border))]">
+    <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+      <a href="index.html" class="text-3xl font-black text-gradient">Just Show Up</a>
+      <div class="space-x-10 text-lg">
+        <a href="index.html" class="hover:text-[hsl(var(--primary))] transition">Home</a>
+        <a href="about.html" class="hover:text-[hsl(var(--primary))] transition">About</a>
+        <a href="reviews.html" class="hover:text-[hsl(var(--primary))] transition">Reviews</a>
+        <a href="contact.html" class="hover:text-[hsl(var(--primary))] transition">Contact</a>
+      </div>
     </div>
-  </section>
+  </nav>
 
-  <footer><!-- footer content --></footer>
+  <main class="pt-32 pb-20">
+    <div class="container mx-auto px-6">
+      <h1 class="text-6xl md:text-8xl font-black text-center text-gradient mb-16">About Us</h1>
+
+      <div class="glass-card max-w-5xl mx-auto p-12 md:p-16 glow-pink">
+        <p class="text-xl md:text-2xl text-gray-200 leading-relaxed mb-10">
+          We started Just Show Up because planning dates shouldn't feel like a second job.
+        </p>
+        <p class="text-xl md:text-2xl text-gray-200 leading-relaxed mb-10">
+          One person always ends up doing all the thinking, researching, booking — and the spark gets lost in the stress. We wanted something better: effortless, spontaneous, thoughtful moments that just happen.
+        </p>
+        <p class="text-xl md:text-2xl text-gray-200 leading-relaxed mb-10">
+          Tell us your vibe, your zip code, and what you're feeling — we scan what's happening nearby right now and give you perfect low-pressure options. No RSVPs, no overthinking, no planning. Just show up and enjoy.
+        </p>
+        <p class="text-xl md:text-2xl text-gray-200 leading-relaxed">
+          Built in Arlington, Texas — but made for anywhere. Let's bring back real connection, one unplanned night at a time.
+        </p>
+
+        <div class="mt-16 text-center">
+          <a href="index.html" class="btn-gradient px-12 py-6 text-2xl font-bold rounded-2xl glow-pink inline-block">
+            Find Your Next Date →
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
 </body>
 </html>
