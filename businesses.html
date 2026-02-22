@@ -109,7 +109,7 @@
             <li>"Date Night Venue" badge</li>
             <li>Basic analytics (views, clicks)</li>
           </ul>
-          <button class="btn-gradient px-12 py-5 text-xl font-bold rounded-2xl glow-pink w-full">
+          <button onclick="scrollToSignup()" class="btn-gradient px-12 py-5 text-xl font-bold rounded-2xl glow-pink w-full">
             Get Started →
           </button>
         </div>
@@ -128,7 +128,7 @@
             <li>Detailed analytics & lead tracking</li>
             <li>Featured in "Tonight" section</li>
           </ul>
-          <button class="btn-gradient px-12 py-5 text-xl font-bold rounded-2xl glow-pink w-full">
+          <button onclick="scrollToSignup()" class="btn-gradient px-12 py-5 text-xl font-bold rounded-2xl glow-pink w-full">
             Get Started →
           </button>
         </div>
@@ -144,14 +144,14 @@
             <li>Dedicated "Featured Venue" spotlight</li>
             <li>Priority support + monthly report</li>
           </ul>
-          <button class="btn-gradient px-12 py-5 text-xl font-bold rounded-2xl glow-pink w-full">
+          <button onclick="scrollToSignup()" class="btn-gradient px-12 py-5 text-xl font-bold rounded-2xl glow-pink w-full">
             Get Started →
           </button>
         </div>
       </div>
 
-      <!-- Signup Form -->
-      <div class="glass-card max-w-4xl mx-auto p-12 mt-20 glow-pink">
+      <!-- Signup Form Section (with ID for scrolling) -->
+      <div id="signup-section" class="glass-card max-w-4xl mx-auto p-12 mt-20 glow-pink scroll-mt-24">
         <h2 class="text-5xl font-black text-gradient text-center mb-12">Get Listed Today</h2>
         <form id="business-form" class="space-y-8">
           <div class="grid md:grid-cols-2 gap-8">
@@ -179,11 +179,19 @@
   </main>
 
   <script>
-    // Simple form submit demo
+    // Smooth scroll to signup section when clicking "Get Started"
+    function scrollToSignup() {
+      document.getElementById('signup-section').scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+
+    // Form submit demo (placeholder - connect to backend/Stripe later)
     document.getElementById('business-form')?.addEventListener('submit', function(e) {
       e.preventDefault();
       alert("✅ Business submission received! We'll review and get back to you within 24–48 hours.");
-      // In real version: send to backend / Stripe
+      // In real version: send to backend / Stripe checkout
     });
   </script>
 
