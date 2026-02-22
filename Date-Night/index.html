@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Just Show Up – Spontaneous Dates</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --background: 228 45% 7%;
+      --foreground: 210 40% 96%;
+      --card: 228 40% 10%;
+      --primary: 328 100% 60%;
+      --secondary: 199 100% 70%;
+      --muted: 228 30% 16%;
+      --border: 228 30% 20%;
+      --neon-pink: 328 100% 60%;
+      --ice-blue: 199 100% 70%;
+      --navy: 228 45% 7%;
+      --navy-mid: 228 40% 12%;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(-45deg, hsl(var(--navy)), hsl(250,40%,10%), hsl(var(--navy)), hsl(280,40%,12%));
+      background-size: 400% 400%;
+      animation: gradient-shift 18s ease infinite;
+      color: hsl(var(--foreground));
+      min-height: 100vh;
+    }
+
+    @keyframes gradient-shift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+    }
+
+    .text-gradient {
+      background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(280,90%,65%) 50%, hsl(var(--secondary)) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .glow-pink {
+      box-shadow: 0 0 30px hsl(var(--primary)/0.4), 0 0 60px hsl(var(--primary)/0.2);
+    }
+
+    .glass-card {
+      background: rgba(228,40%,10%,0.75);
+      backdrop-filter: blur(12px);
+      border: 1px solid hsl(var(--border));
+      border-radius: 1.5rem;
+    }
+
+    .btn-gradient {
+      background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(280,90%,65%) 50%, hsl(var(--secondary)) 100%);
+      transition: all 0.4s;
+    }
+
+    .btn-gradient:hover {
+      transform: translateY(-4px) scale(1.03);
+      box-shadow: 0 0 40px hsl(var(--primary)/0.6);
+    }
+
+    .interest-bubble {
+      padding: 14px 24px;
+      background: rgba(99,102,241,0.12);
+      color: hsl(var(--foreground));
+      border-radius: 9999px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s;
+      border: 2px solid transparent;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .interest-bubble:hover {
+      transform: scale(1.05) translateY(-2px);
+      box-shadow: 0 0 25px rgba(236,72,153,0.4);
+      background: linear-gradient(135deg, hsl(328,100%,60%,0.25), hsl(199,100%,70%,0.25));
+    }
+
+    .interest-bubble input:checked + span {
+      background: linear-gradient(to right, #ec4899, #7c3aed);
+      color: white;
+      box-shadow: 0 0 30px rgba(236,72,153,0.6);
+    }
+
+    .interest-bubble input:checked + span::before {
+      content: "✓";
+      font-weight: bold;
+      margin-right: 0.5rem;
+    }
+
+    .spinner {
+      width: 60px;
+      height: 60px;
+      border: 6px solid hsl(var(--ice-blue)/0.3);
+      border-top: 6px solid hsl(var(--neon-pink));
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 1.5rem;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 w-full bg-[hsl(var(--navy-mid))] backdrop-blur-xl z-50 border-b border-[hsl(var(--border))]">
+    <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+      <a href="index.html" class="text-3xl font-black text-gradient">Just Show Up</a>
+      <div class="space-x-10 text-lg">
+        <a href="index.html" class="hover:text-[hsl(var(--primary))] transition">Home</a>
+        <a href="about.html" class="hover:text-[hsl(var(--primary))] transition">About</a>
+        <a href="reviews.html" class="hover:text-[hsl(var(--primary))] transition">Reviews</a>
+        <a href="contact.html" class="hover:text-[hsl(var(--primary))] transition">Contact</a>
+        <a href="businesses.html" class="hover:text-[hsl(var(--primary))] transition">For Businesses</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero + Form -->
+  <header class="pt-44 pb-48 relative overflow-hidden" style="clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);">
+    <div class="absolute inset-0 opacity-30 pointer-events-none">
+      <div class="absolute inset-0 bg-gradient-to-br from-[hsl(var(--primary))/10] via-[hsl(var(--secondary))/10] to-transparent animate-pulse-glow"></div>
+    </div>
+    <div class="container mx-auto px-6 relative z-10 text-center">
+      <h1 class="text-6xl md:text-8xl font-black mb-8 text-gradient">
+        Spontaneous Dates<br/>Just Show Up
+      </h1>
+      <p class="text-2xl md:text-3xl text-gray-300 max-w-4xl mx-auto mb-12">
+        Tell us your vibe & zip — we find what's happening <span class="text-[hsl(var(--primary))] font-semibold">nearby right now</span>.
+      </p>
+
+      <!-- Form Card -->
+      <div class="glass-card max-w-4xl mx-auto p-10 md:p-14 glow-pink">
+        <form id="date-form" class="space-y-10">
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <label class="block text-xl font-medium mb-4 text-white">Zip Code *</label>
+              <input type="text" name="zip" placeholder="e.g. 76010" required pattern="\d{5}" class="w-full px-6 py-5 bg-[hsl(var(--navy-mid))] border border-white/30 rounded-2xl text-white placeholder-gray-400 focus:border-[hsl(var(--primary))] focus:ring-2 focus:ring-[hsl(var(--primary))/0.3] outline-none transition">
+            </div>
+
+            <div>
+              <label class="block text-xl font-medium mb-4 text-white">Budget Vibe</label>
+              <select name="budget" class="w-full px-6 py-5 bg-[hsl(var(--navy-mid))] border border-white/30 rounded-2xl text-white focus:border-[hsl(var(--primary))] focus:ring-2 focus:ring-[hsl(var(--primary))/0.3] outline-none transition">
+                <option value="">Choose...</option>
+                <option value="free">Free</option>
+                <option value="cheap">$0–$25</option>
+                <option value="medium">$25–$60</option>
+                <option value="splurge">$60+</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xl font-medium mb-4 text-white">What sounds fun tonight?</label>
+            <div class="flex flex-wrap gap-4 justify-center">
+              <label class="interest-bubble"><input type="checkbox" name="interest" value="food" hidden><span>Food & Drinks</span></label>
+              <label class="interest-bubble"><input type="checkbox" name="interest" value="music" hidden><span>Live Music</span></label>
+              <label class="interest-bubble"><input type="checkbox" name="interest" value="outdoors" hidden><span>Outdoors</span></label>
+              <label class="interest-bubble"><input type="checkbox" name="interest" value="drinks" hidden><span>Bars & Nightlife</span></label>
+              <label class="interest-bubble"><input type="checkbox" name="interest" value="adventure" hidden><span>Adventure</span></label>
+              <label class="interest-bubble"><input type="checkbox" name="interest" value="games" hidden><span>Games & Trivia</span></label>
+              <label class="interest-bubble"><input type="checkbox" name="interest" value="art" hidden><span>Art & Culture</span></label>
+              <label class="interest-bubble"><input type="checkbox" name="interest" value="chill" hidden><span>Just Chill</span></label>
+            </div>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <label class="block text-xl font-medium mb-4 text-white">Time Available</label>
+              <select name="time" class="w-full px-6 py-5 bg-[hsl(var(--navy-mid))] border border-white/30 rounded-2xl text-white focus:border-[hsl(var(--primary))] focus:ring-2 focus:ring-[hsl(var(--primary))/0.3] outline-none transition">
+                <option value="">Choose...</option>
+                <option value="30min">30 minutes</option>
+                <option value="1h">1 hour</option>
+                <option value="2h">2 hours</option>
+                <option value="allnight">All night</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-xl font-medium mb-4 text-white">Make it Yours (optional)</label>
+              <textarea name="description" rows="3" placeholder="e.g. rooftop views and craft beer, love dogs..." class="w-full px-6 py-5 bg-[hsl(var(--navy-mid))] border border-white/30 rounded-2xl text-white placeholder-gray-400 focus:border-[hsl(var(--primary))] focus:ring-2 focus:ring-[hsl(var(--primary))/0.3] outline-none resize-none"></textarea>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-gradient w-full py-7 text-2xl font-bold rounded-2xl glow-pink">
+            Surprise Me →
+          </button>
+        </form>
+      </div>
+    </div>
+  </header>
+
+  <!-- Loading -->
+  <div id="loading" class="hidden container mx-auto px-6 py-32 text-center">
+    <div class="spinner"></div>
+    <h3 class="text-4xl font-black text-gradient">Finding real events nearby...</h3>
+  </div>
+
+  <!-- Results -->
+  <div id="results" class="hidden container mx-auto px-6 py-20">
+    <h2 class="text-5xl md:text-7xl font-black text-center text-gradient mb-16">Your Matches Nearby 🔥</h2>
+    <div id="event-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-10"></div>
+    <button onclick="newSearch()" class="btn-gradient mx-auto mt-16 px-16 py-7 text-2xl font-bold rounded-2xl glow-pink">
+      New Surprise
+    </button>
+  </div>
+
+  <!-- Modal -->
+  <div id="user-modal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center">
+    <div class="glass-card p-12 max-w-lg w-full mx-6 relative glow-pink">
+      <button onclick="document.getElementById('user-modal').classList.add('hidden')" class="absolute top-6 right-6 text-5xl text-gray-400 hover:text-neon-pink">×</button>
+      <h2 class="text-5xl font-black text-gradient mb-10 text-center">Confirm Your Spot</h2>
+      <form id="user-form" class="space-y-6">
+        <input type="text" id="user-name" placeholder="Full Name *" required class="w-full px-6 py-5 bg-[hsl(var(--navy-mid))] border border-white/30 rounded-2xl text-white focus:border-neon-pink focus:ring-2 focus:ring-neon-pink/30 outline-none">
+        <input type="email" id="user-email" placeholder="Email *" required class="w-full px-6 py-5 bg-[hsl(var(--navy-mid))] border border-white/30 rounded-2xl text-white focus:border-neon-pink focus:ring-2 focus:ring-neon-pink/30 outline-none">
+        <input type="number" id="user-age" placeholder="Age *" min="18" required class="w-full px-6 py-5 bg-[hsl(var(--navy-mid))] border border-white/30 rounded-2xl text-white focus:border-neon-pink focus:ring-2 focus:ring-neon-pink/30 outline-none">
+        <input type="tel" id="user-phone" placeholder="Phone (optional)" class="w-full px-6 py-5 bg-[hsl(var(--navy-mid))] border border-white/30 rounded-2xl text-white focus:border-neon-pink focus:ring-2 focus:ring-neon-pink/30 outline-none">
+        <button type="submit" class="btn-gradient w-full py-6 text-2xl font-bold rounded-2xl glow-pink">
+          Confirm & Get Details →
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Success -->
+  <div id="success-message" class="hidden container mx-auto px-6 py-32 text-center">
+    <div class="glass-card p-16 max-w-3xl mx-auto glow-pink">
+      <h2 class="text-7xl font-black text-gradient mb-8">You're In! 🎉</h2>
+      <p id="success-text" class="text-3xl mb-12">Details sent to your email. Have an amazing time!</p>
+      <button onclick="newSearch()" class="btn-gradient px-16 py-7 text-2xl font-bold rounded-2xl glow-pink">
+        Find Another Date
+      </button>
+    </div>
+  </div>
+
+  <script>
+    // Single clean submit handler – no duplicates, no redeclarations
+    document.getElementById('date-form').addEventListener('submit', async function(e) {
+      e.preventDefault(); // Stops reload loop
+
+      const loading = document.getElementById('loading');
+      const results = document.getElementById('results');
+      const success = document.getElementById('success-message');
+
+      loading.classList.remove('hidden');
+      results.classList.add('hidden');
+      success.classList.add('hidden');
+
+      loading.scrollIntoView({ behavior: 'smooth' });
+
+      const formData = new FormData(this);
+      const params = new URLSearchParams({
+        zip: formData.get('zip') || '76010',
+        interests: formData.getAll('interest').join(','),
+        description: formData.get('description'),
+        time: formData.get('time'),
+        budget: formData.get('budget')
+      });
+
+      try {
+        const response = await fetch(`https://date-night-g4nf6d67-michael5252s-projects.vercel.app/api/events?${params}`);
+
+        if (!response.ok) {
+          throw new Error(`Backend error: ${response.status} - ${response.statusText}`);
+        }
+
+        const events = await response.json();
+
+        loading.classList.add('hidden');
+
+        const grid = document.getElementById('event-grid');
+        grid.innerHTML = '';
+
+        if (events.length === 0) {
+          grid.innerHTML = '<p class="text-2xl text-center text-gray-400">No events found — try different filters!</p>';
+        } else {
+          events.forEach(ev => {
+            grid.innerHTML += `
+              <div class="glass-card p-8 text-center glow-blue">
+                <h3 class="text-3xl font-black text-gradient mb-4">${ev.title}</h3>
+                <p class="text-xl mb-6">${ev.desc}</p>
+                <p class="text-lg mb-4">${ev.is_free ? 'Free' : 'Paid'} • ${ev.start ? new Date(ev.start).toLocaleString() : 'TBD'} • ${ev.venue || 'TBD'}</p>
+                <a href="${ev.url}" target="_blank" class="btn-gradient inline-block px-10 py-5 text-xl font-bold rounded-2xl glow-pink">
+                  View on Eventbrite →
+                </a>
+              </div>
+            `;
+          });
+        }
+
+        results.classList.remove('hidden');
+        results.scrollIntoView({ behavior: 'smooth' });
+      } catch (err) {
+        console.error('Fetch error:', err);
+        alert(`Error loading events: ${err.message}\n\nCommon fixes:\n1. Check Vercel env var EVENTBRITE_TOKEN\n2. Redeploy backend\n3. Use live Vercel URL (not local Live Server)`);
+        loading.classList.add('hidden');
+      }
+    });
+
+    // Optional modal handler
+    document.getElementById('user-form')?.addEventListener('submit', function(e) {
+      e.preventDefault();
+      document.getElementById('user-modal').classList.add('hidden');
+      document.getElementById('success-message').classList.remove('hidden');
+      document.getElementById('success-message').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    function newSearch() {
+      document.getElementById('results').classList.add('hidden');
+      document.getElementById('success-message').classList.add('hidden');
+      document.getElementById('loading').classList.add('hidden');
+      document.getElementById('user-modal').classList.add('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      document.getElementById('date-form').reset();
+    }
+  </script>
+</body>
+</html>
